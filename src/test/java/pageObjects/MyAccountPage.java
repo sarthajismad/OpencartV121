@@ -1,0 +1,32 @@
+package pageObjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class MyAccountPage extends BasePage{
+	// Constructor
+    public MyAccountPage(WebDriver driver) {
+        super(driver);
+    }
+
+    // Locator for My Account heading
+    @FindBy(xpath = "//h2[text()='My Account']")
+    WebElement msgHeading;
+    
+    @FindBy(xpath="//div[@class='list-group']//a[text()='Logout']")
+    WebElement lnkLogout;
+
+    // Method to verify My Account page exists
+    public boolean isMyAccountPageExists() {
+        try {
+            return (msgHeading.isDisplayed());
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    public void clickLogout() {
+    	lnkLogout.click();
+    }
+
+}
